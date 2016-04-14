@@ -1,0 +1,34 @@
+<!Doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Test web page</title>
+<link type="text/css" rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+<div class="app" ng-app="myapp">
+  <h1 class="header">Trending Videos</h1>
+  <hr>
+    <div ng-controller="vedioListCtrl" class="container">
+	    <div class="row">
+		    <div class="col-md-12 box" ng-repeat="remainder in [0,1,2,3]">
+			    <ul>
+				    <li ng-repeat="video in videos" ng-if="$index % 4 === remainder">
+					    <div class="video-box" ng-init="hovering=false">
+						    <img ng-src={{video.thumbnail}} ng-class="{'showElem':hovering}" ng-mouseover="hovering=false" ng-mouseleave="hovering=true">
+                            <video class="video" ng-mouseenter="Play($event)" ng-mouseleave="Stop($event)">
+                                <source ng-src={{video.mp4vid}} type="video/mp4">
+                            </video>
+                        </div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
